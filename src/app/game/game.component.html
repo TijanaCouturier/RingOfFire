@@ -14,7 +14,7 @@
         <img *ngFor="let card of game.playedCards" class="played-card" src="assets/img/Cards/{{ card }}.png">
 
         <!--Current card (Animation)-->
-        <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card" style="right: 25px;" src="/assets/img/Cards/{{ game.currentCard }}.png ">
+        <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card" style="right: 25px;" src="assets/img/Cards/{{ game.currentCard }}.png ">
 
     </div>
 
