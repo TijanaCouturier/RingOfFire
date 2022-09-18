@@ -8,7 +8,21 @@
     align-items: center;
     img {
         height: 100vh;
-        width: 70vw;
+        // width: 90%;
+        @media (max-width: 1460px) {
+            width: 90%;
+        }
+        @media (max-width: 960px) {
+            height: auto;
+            width: 100%;
+        }
+        @media (max-width: 500px) {
+            height: auto;
+            width: 100%;
+        }
+    }
+    @media (max-width: 960px) {
+        overflow: hidden;
     }
 }
 
@@ -22,9 +36,42 @@
     img {
         width: 25vw;
         height: auto;
+        @media (max-width: 850px) {
+            width: 220px;
+            position: absolute;
+            bottom: 60px;
+            // left: -30px;
+        }
+        @media (max-width: 600px) {
+            width: 40vw;
+            height: 50px;
+            position: absolute;
+            bottom: 80px;
+            right: 195px;
+        }
+        @media (max-width: 500px) {
+            width: 40vw;
+            height: 50px;
+            position: absolute;
+            bottom: 120px;
+            right: 300px;
+        }
+        @media (max-width: 400px) {
+            width: 40vw;
+            height: 35px;
+            position: absolute;
+            bottom: 150px;
+            right: 355px;
+        }
     }
     &:hover {
         filter: brightness(1.25);
         cursor: pointer;
+    }
+    @media (max-width: 960px) {
+        width: 400px;
+        position: absolute;
+        bottom: 200px;
+        left: 200px;
     }
 }

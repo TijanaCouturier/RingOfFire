@@ -2,7 +2,6 @@
     //width: 100vh;
     height: 100vh;
     max-width: 100%;
-    background-image: url("/assets/img/board.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,4 +65,57 @@
     bottom: 32px;
     left: 100px;
     right: 100px;
+    @media (max-width: 880px) {
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+app-player,
+app-player-mobile {
+    cursor: pointer;
+    &:hover {
+        filter: brightness(1.15);
+    }
+}
+
+.scroll-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    app-player-mobile {
+        margin-left: 8px;
+    }
+}
+
+.gameOver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 500px;
+        position: absolute;
+        top: 300px;
+        animation: 5s fadeIn ease-out;
+    }
+}
+
+.gameOverText {
+    position: absolute;
+    top: 150px;
+    font-size: 35px;
+    font-weight: 800;
+    font-family: sans-serif;
+}
+
+.preloadImage {
+    opacity: 0;
+    height: 0px;
+    width: 0px;
+    z-index: -9999999;
 }
