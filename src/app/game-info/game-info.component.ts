@@ -25,7 +25,7 @@ export class GameInfoComponent implements OnInit, OnChanges {
 
   title = '';
   description = '';
-  @Input() card: string;
+  @Input() card: string; //input variable wo wir unsere Karte einpacken können. Ich möchte die aktuelle Karte die ich jetzt hier ziehe in diese card Commponente reinpacken möchte
 
   constructor() { }
 
@@ -34,7 +34,8 @@ export class GameInfoComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-
+   //void bedeutet dass die Methode ausgeführt wird und nichts zurückgibt
+    //Diese Variable wird immer ausgeführt, wenn wir unsere input Variable ändern
     if(this.card) {
       console.log('Current card is', this.card);
       let cardNumber = +this.card.split('_')[1];

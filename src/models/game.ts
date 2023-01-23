@@ -16,8 +16,11 @@ export class Game {
          this.stack.push('hearts_' + i);
         }
 
+        //Hier sagst du, wenn die karte geladen sind, dann mit shuffle function die ausmischen. this.stack also Kartenspiel mischen
         shuffle(this.stack);
     }
+
+  
 
     public toJson() {
       return {
@@ -33,7 +36,9 @@ export class Game {
 
 }
 
+
 function shuffle(array) {
+  //zum Karten mischen
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...

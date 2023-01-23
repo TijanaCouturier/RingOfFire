@@ -15,6 +15,7 @@ export class DialogAddPlayerComponent implements OnInit {
   }
 
   onNoClick(){
+    //das vom Material design kopieren. Alles. Auch die Sachen die man importieren soll
     this.dialogRef.close();
   }
 

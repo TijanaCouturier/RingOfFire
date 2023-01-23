@@ -31,6 +31,7 @@
 .pick-card {
     animation: pick-card-animation 1s ease-in-out;
     transform: scale(1.3) translateX(140px) translateY(-180px) rotate(-10deg);
+    // diese translateY(-180px) bedeutet, dass die Karte nach oben gelegt wird wegen dem -
 }
 
 @keyframes pick-card-animation {

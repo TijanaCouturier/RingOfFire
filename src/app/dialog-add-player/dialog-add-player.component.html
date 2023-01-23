@@ -9,4 +9,5 @@
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">No Thanks</button>
     <button mat-button [disabled]="name.length == 0" [mat-dialog-close]="name" cdkFocusInitial>Ok</button>
+    <!--Der btn ist disabled, wenn name.length == 0 ist. Also wird angewendet nur wenn die Variable name den Wert 0 hat-->
 </div>
