@@ -65,6 +65,7 @@ export class GameComponent implements OnInit {
       console.log('Game is', this.game);
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+      
       this.saveGame();
       
       //ich möchte für jede Karte die Animation oben wiederholen und mit setTimeout wird die schon gezogene Karte entfernt und neue geladen mit der Animation von oben

@@ -10,7 +10,8 @@
         margin-left: 16px;
         text-overflow: ellipsis;
         white-space: nowrap;
-        //overflow: hidden;
+        overflow: hidden;
+        padding-bottom: 5px;
     }
     background-color: rgb(50, 50, 50, 0.8);
     img {

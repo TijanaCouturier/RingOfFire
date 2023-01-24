@@ -17,13 +17,13 @@ body {
     overflow: hidden;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1000px) {
     .hide-mobile {
         display: none !important;
     }
 }
 
-@media (min-width: 720px) {
+@media (min-width: 1000px) {
     .hide-desktop {
         display: none !important;
     }
