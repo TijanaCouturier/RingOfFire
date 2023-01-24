@@ -16,6 +16,7 @@ export class GameComponent implements OnInit {
  game: Game; //neue Variable vom Typ Game - was ein Object ist - in game.ts
  gameId: string;
  gameOver = false;
+ startGame = false;
 
   constructor(private firestore: AngularFirestore, private route: ActivatedRoute, public dialog: MatDialog) { }
 
@@ -88,6 +89,10 @@ export class GameComponent implements OnInit {
         if (change == 'DELETE') {
           this.game.players.splice(playerId, 1);
           this.game.player_images.splice(playerId, 1);
+          if (this.game.players.length <= 1) {
+            console.log('Received change and EXE');
+            this.startGame = false;
+          }
         } else {
           this.game.player_images[playerId] = change;
         }
@@ -111,6 +116,10 @@ export class GameComponent implements OnInit {
         this.game.players.push(name);
         console.log(this.game.players);
         this.game.player_images.push('profil-1.png');
+        if (this.game.players.length > 1) {
+          this.startGame = true;
+        }
+         // image enabled = true setzen
         this.saveGame();
       }
     });
@@ -127,3 +136,6 @@ export class GameComponent implements OnInit {
       .update(this.game.toJson());
   }
 }
+
+
+

@@ -13,7 +13,7 @@
         <!--Die Forschleife machen wir, weil wir mehr Karten haben wollen und die versetzt anzeigen wollen. Die Versetzung schaffen wir mit dem i*5 in px-->
         <img *ngFor=" let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'right.px': i * 5}" src="assets/img/Cards/card_cover.png ">
         <!--Das mit eine Karte (siehe unten) machen wir, weil wir nur die oberste Karte animieren wollen, nicht alle-->
-        <img (click)="takeCard()" class="top-card" style="right: 25px" src="assets/img/Cards/card_cover.png ">
+        <img *ngIf="startGame" (click)="takeCard()" class="top-card" style="right: 25px" src="assets/img/Cards/card_cover.png ">
 
         <!--Stack for played cards-->
         <!--Hier zeigen wir alle Karten die schon gespiel wurden-->
@@ -39,4 +39,4 @@
     <mat-icon>add</mat-icon>
 </button>
 
-<!--<img class="preloadImage" src="./assets/img/cards/{{ game.stack[game.stack.length -1] }}.png"> -->
+<img class="preloadImage" src="./assets/img/Cards/{{ game.stack[game.stack.length -1] }}.png">
