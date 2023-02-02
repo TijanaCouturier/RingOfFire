@@ -13,15 +13,22 @@
         <!--Die Forschleife machen wir, weil wir mehr Karten haben wollen und die versetzt anzeigen wollen. Die Versetzung schaffen wir mit dem i*5 in px-->
         <img *ngFor=" let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'right.px': i * 5}" src="assets/img/Cards/card_cover.png ">
         <!--Das mit eine Karte (siehe unten) machen wir, weil wir nur die oberste Karte animieren wollen, nicht alle-->
+
+
+
+
         <img *ngIf="startGame" (click)="takeCard()" class="top-card" style="right: 25px" src="assets/img/Cards/card_cover.png ">
 
         <!--Stack for played cards-->
-        <!--Hier zeigen wir alle Karten die schon gespiel wurden-->
+        <!--Hier zeigen wir alle Karten die schon gespielt wurden-->
         <img *ngFor="let card of game.playedCards" class="played-card" src="assets/img/Cards/{{ card }}.png">
 
         <!--Current card (Animation)-->
         <!--Diese pickCardAnimation classe wird nur dafür verwendet die nächste Karte zu zeigen. Wenn sie true ist wird die Karte beim click animiert-->
         <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card" style="right: 25px;" src="assets/img/Cards/{{game.currentCard}}.png ">
+
+
+
 
     </div>
 
@@ -35,11 +42,11 @@
     </button>
 </div>
 
-<!--currentCard ist ein String wo eigentlich drin steht was wie haben, also Art der Karte z.B. Pick mit dem Unterstrich und dann die Nummmer der Karte-->
+<!--currentCard ist ein String wo eigentlich drin steht was wir haben, also Art der Karte z.B. Pick mit dem Unterstrich und dann die Nummmer der Karte-->
 <app-game-info *ngIf="!gameOver" [card]="game.currentCard" class="pin-bottom"></app-game-info>
 
 <button *ngIf="!gameOver" mat-fab color="primary" (click)="openDialog()" class="btn-add">
     <mat-icon>add</mat-icon>
 </button>
 
-<img class="preloadImage" src="./assets/img/Cards/{{ game.stack[game.stack.length -1] }}.png">
+<img class="preloadImage" *ngIf="!(game.stack.length < 1)" src="./assets/img/Cards/{{ game.stack[game.stack.length -1] }}.png">

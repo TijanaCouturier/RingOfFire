@@ -13,7 +13,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  @Input() playerRemove:boolean = true;
+
  game: Game; //neue Variable vom Typ Game - was ein Object ist - in game.ts
  gameId: string;
  gameOver = false;
@@ -50,10 +50,13 @@ export class GameComponent implements OnInit {
   
   newGame(){
     this.game = new Game(); 
+    this.gameOver = false;
+    this.startGame = false;
     //Diese Variable kriegt ein Object erstellt. Es wird ein leeres JSON Object angelegt mit den Eigenschaften die in game.ts ist
   
     //Immer wenn wir ein neues Spiel anlegen, also wenn wir sagen this.game = new Game() machen wir neues Spiel, neues JSON/Object wo ein bisschen Logik drin ist. Also ein Array mit gemischten Karten
   }
+ 
 
   takeCard(){
     

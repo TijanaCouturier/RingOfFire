@@ -15,12 +15,13 @@ import { Game } from 'src/models/game';
 export class StartScreenComponent implements OnInit {
   game: Game;
 
-  constructor(private firestore: Firestore, private router: Router) { } // private firestore: AngularFirestore,
+  constructor(public firestore: Firestore, private router: Router) { } // private firestore: AngularFirestore,
 
   ngOnInit(): void {
   }
 
   async newGame(){
+   
     //Start game
     let game = new Game();
 

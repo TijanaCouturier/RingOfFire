@@ -2,10 +2,19 @@ mat-card {
     @media (max-width: 720px) {
         min-height: 100px;
     }
+    @media (max-width: 420px) {
+        max-height: 110px;
+    }
 }
 
 mat-card-content {
     @media (max-width: 720px) {
         max-width: 450px;
+    }
+    @media (max-width: 560px) {
+        max-width: 350px;
+    }
+    @media (max-width: 420px) {
+        max-width: 280px;
     }
 }

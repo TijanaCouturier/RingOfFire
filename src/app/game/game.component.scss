@@ -9,11 +9,16 @@
 
 .card-stack {
     position: relative;
+    @media (max-width: 420px) {
+        padding-bottom: 60px;
+    }
     img {
         position: absolute;
         width: 120px;
-        @media (max-width: 400px) {
+        @media (max-width: 420px) {
             padding-right: 25px;
+            width: 100px;
+            padding-bottom: 50px;
         }
     }
 }
@@ -101,11 +106,20 @@ app-player-mobile {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 420px) {
+        height: 100vh;
+        max-width: 100%;
+    }
     img {
         width: 500px;
         position: absolute;
         top: 300px;
         animation: 5s fadeIn ease-out;
+        @media (max-width: 420px) {
+            width: 300px;
+            position: absolute;
+            top: 200px;
+        }
     }
 }
 

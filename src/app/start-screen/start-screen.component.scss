@@ -26,7 +26,10 @@
             padding-left: 200px;
             padding-right: 200px;
         }
-        @media (max-width: 960px) {}
+        @media (max-width: 420px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
     .header {
         font-weight: bold;
