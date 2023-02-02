@@ -1,5 +1,8 @@
+@import './models/fonts.css';
+@import './models/material-font.css';
 body {
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
 html,
@@ -9,7 +12,6 @@ body {
 
 body {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
 }
 
 html,

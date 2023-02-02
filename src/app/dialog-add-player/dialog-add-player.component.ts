@@ -9,6 +9,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DialogAddPlayerComponent implements OnInit {
  name: string = '';
 
+
+
   constructor(public dialogRef: MatDialogRef<DialogAddPlayerComponent>) { }
 
   ngOnInit(): void {
@@ -18,5 +20,6 @@ export class DialogAddPlayerComponent implements OnInit {
     //das vom Material design kopieren. Alles. Auch die Sachen die man importieren soll
     this.dialogRef.close();
   }
+
 
 }

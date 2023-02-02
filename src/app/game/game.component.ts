@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog} from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
@@ -13,10 +13,12 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
+  @Input() playerRemove:boolean = true;
  game: Game; //neue Variable vom Typ Game - was ein Object ist - in game.ts
  gameId: string;
  gameOver = false;
  startGame = false;
+
 
   constructor(private firestore: AngularFirestore, private route: ActivatedRoute, public dialog: MatDialog) { }
 
@@ -54,9 +56,12 @@ export class GameComponent implements OnInit {
   }
 
   takeCard(){
+    
     console.log('Game is', this.game);
     if(this.game.stack.length == 0) {
       this.gameOver = true;
+      this.game.players = [];
+     
     } else if (!this.game.pickCardAnimation) {
       //ich möchte dass die Animation ausgeführt wird nur wenn die pickCardAnimation false ist
       this.game.currentCard = this.game.stack.pop(); //mit this.game.stack greifen wir auf unseren Array zu. Mit pop nehmen wir das letzte Wert aus dem Array. Und dieses pop gibt uns das letzte Wert aus unserem Array zurück und gleichzeitig wird es aus unserem Array entfernt.
@@ -119,7 +124,7 @@ export class GameComponent implements OnInit {
         if (this.game.players.length > 1) {
           this.startGame = true;
         }
-         // image enabled = true setzen
+       
         this.saveGame();
       }
     });
@@ -132,7 +137,7 @@ export class GameComponent implements OnInit {
     this
       .firestore
       .collection('games')
-      .doc(this.gameId) //hier
+      .doc(this.gameId) 
       .update(this.game.toJson());
   }
 }

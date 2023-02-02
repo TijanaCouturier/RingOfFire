@@ -46,7 +46,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     MatInputModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    //testen
+   
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),

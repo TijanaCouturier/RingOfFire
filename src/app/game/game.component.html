@@ -30,6 +30,9 @@
 <div *ngIf="gameOver" class="gameOver">
     <img src="./assets/img/gameOver.png">
     <span class="gameOverText">GAME OVER</span>
+    <button mat-stroked-button color="primary" (click)="newGame()" class="newGame">
+        New Game
+    </button>
 </div>
 
 <!--currentCard ist ein String wo eigentlich drin steht was wie haben, also Art der Karte z.B. Pick mit dem Unterstrich und dann die Nummmer der Karte-->

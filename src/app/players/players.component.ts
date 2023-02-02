@@ -11,6 +11,7 @@ export class PlayersComponent implements OnInit {
   @Input() image = 'profil-1.png';
   @Input() playerActive:boolean = false; //das bedeutet dass der Spieler standardmäßig nicht aktiv ist
 
+
   constructor() { }
 
   ngOnInit(): void {
