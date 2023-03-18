@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { collection } from 'firebase/firestore';
 import { Firestore, addDoc } from '@angular/fire/firestore';
-//import { AngularFirestore } from '@angular/fire/compat/firestore';
-
 import { Game } from 'src/models/game';
 
 
@@ -15,55 +13,18 @@ import { Game } from 'src/models/game';
 export class StartScreenComponent implements OnInit {
   game: Game;
 
-  constructor(public firestore: Firestore, private router: Router) { } // private firestore: AngularFirestore,
+  constructor(public firestore: Firestore, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   async newGame(){
-   
-    //Start game
-    let game = new Game();
-
+   let game = new Game();
    const coll =  collection(this.firestore, 'games');
-   console.log("Document written with ID: ", coll);
-   console.log("Document written with ID: ", game);
    //CRUD = Create => addDoc, Read, Update => setDoc, Delete
    let gameInfo = await addDoc(coll, game.toJson());
-   console.log(gameInfo);
-  this.router.navigateByUrl('game/' + gameInfo.id);
-   
+   this.router.navigateByUrl('game/' + gameInfo.id);
   }
 
-
-/* VARIANTE 1
-    if(this.game){
-      this.firestore
-      .collection('games')
-      .add(this.game.toJson())
-      .then((gameInfo: any) => {
-        this.router.navigateByUrl('/game/' + gameInfo.id);
-      });
-    }
-  */
-  }
+}
   
-
-
-
-
-/* VARIANTE 2
-  async newGame(){
-    //Start game
-    let game = new Game();
-
-   const coll =  collection(this.firestore, 'games');
-   console.log("Document written with ID: ", coll);
-   console.log("Document written with ID: ", game);
-   //CRUD = Create => addDoc, Read, Update => setDoc, Delete
-   let gameInfo = await addDoc(coll, game.toJson());
-   console.log(gameInfo);
-  this.router.navigateByUrl('game/' + gameInfo.id);
-   
-  }
-*/

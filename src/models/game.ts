@@ -7,7 +7,6 @@ export class Game {
     public pickCardAnimation = false;
     public currentCard: string = '';
 
-
     constructor() {
         for (let i = 1; i < 14; i++){
          this.stack.push('spade_' + i);
@@ -15,13 +14,10 @@ export class Game {
          this.stack.push('diamonds_' + i);
          this.stack.push('hearts_' + i);
         }
-
-        //Hier sagst du, wenn die karte geladen sind, dann mit shuffle function die ausmischen. this.stack also Kartenspiel mischen
         shuffle(this.stack);
     }
 
   
-
     public toJson() {
       return {
           players: this.players,
@@ -33,17 +29,14 @@ export class Game {
           currentCard: this.currentCard
       };
     }
-
 }
 
 
 function shuffle(array) {
-  //zum Karten mischen
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
-
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;

@@ -3,7 +3,7 @@
     width: 300px;
     display: flex;
     align-items: center;
-    border-top-left-radius: 50px; //obere oder untere linke ecke verändern
+    border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     span {
         font-size: 28px;
@@ -23,5 +23,5 @@
 }
 
 .player-active {
-    background-color: orange !important; //nur der Aktive Spieler
+    background-color: orange !important;
 }

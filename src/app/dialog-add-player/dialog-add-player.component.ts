@@ -15,18 +15,16 @@ export class DialogAddPlayerComponent implements OnInit {
  handleKeyboardEvent(event: KeyboardEvent) { 
    if (event.code == 'Enter') {
      document.getElementById("OkBTN").click();
-
    }
   }
+  
   constructor(public dialogRef: MatDialogRef<DialogAddPlayerComponent>) { }
 
   ngOnInit(): void {
   }
 
+
   onNoClick(){
-    //das vom Material design kopieren. Alles. Auch die Sachen die man importieren soll
     this.dialogRef.close();
   }
-
-
 }

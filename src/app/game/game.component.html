@@ -1,8 +1,6 @@
-<!--mit [ngStyle]="{'top.px': 100 + ( i * 90)}" addiere ich den Abstand zwischen Players nach unten. Also 100 + 0 ist 100, 100 + 90 ist 190px...-->
-<!--Diese Variable in der Forschleife ist eigentlich die Name des Players, also Input Parametar. [image] und [name] sind input parametar die wir in players.ts definieren. Das was wir reingeben in unsere Componente-->
-<!--Die name muss also in eine Variable verpackt werden. Und diese name ist eigentlich das was wir eingeben in unsere Componente-->
-<app-players (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 100 + ( i * 90)}" [playerActive]="i == game.currentPlayer" [image]="game.player_images[i]" [name]="player" class="player-position hide-mobile"></app-players>
-<!--[playerActive]="i == game.currentPlayer" bedeutet: Wir definieren eine Variable playerActive und sie kriegt ein Wert (true oder false). Wenn i == game.currentPlayer true ist, dann wird hier true gegeben. Ansonsten false -->
+<app-players (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 100 + ( i * 90)}" [playerActive]="i == game.currentPlayer" [image]="game.player_images[i]" [name]="player" class="player-position hide-mobile">
+</app-players>
+
 <div class="scroll-container hide-desktop">
     <app-player-mobile (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;" [image]="game.player_images[i]" [playerActive]="i == game.currentPlayer" [name]="player"></app-player-mobile>
 </div>
@@ -10,28 +8,16 @@
 <div class="field" *ngIf="!gameOver" style="background-image: url('./assets/img/board.jpg');">
     <!--Card stack-->
     <div class="card-stack">
-        <!--Die Forschleife machen wir, weil wir mehr Karten haben wollen und die versetzt anzeigen wollen. Die Versetzung schaffen wir mit dem i*5 in px-->
         <img *ngFor=" let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'right.px': i * 5}" src="assets/img/Cards/card_cover.png ">
-        <!--Das mit eine Karte (siehe unten) machen wir, weil wir nur die oberste Karte animieren wollen, nicht alle-->
-
-
-
 
         <img *ngIf="startGame" (click)="takeCard()" class="top-card" style="right: 25px" src="assets/img/Cards/card_cover.png ">
 
         <!--Stack for played cards-->
-        <!--Hier zeigen wir alle Karten die schon gespielt wurden-->
         <img *ngFor="let card of game.playedCards" class="played-card" src="assets/img/Cards/{{ card }}.png">
 
         <!--Current card (Animation)-->
-        <!--Diese pickCardAnimation classe wird nur dafür verwendet die nächste Karte zu zeigen. Wenn sie true ist wird die Karte beim click animiert-->
         <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card" style="right: 25px;" src="assets/img/Cards/{{game.currentCard}}.png ">
-
-
-
-
     </div>
-
 </div>
 
 <div *ngIf="gameOver" class="gameOver">
@@ -42,7 +28,6 @@
     </button>
 </div>
 
-<!--currentCard ist ein String wo eigentlich drin steht was wir haben, also Art der Karte z.B. Pick mit dem Unterstrich und dann die Nummmer der Karte-->
 <app-game-info *ngIf="!gameOver" [card]="game.currentCard" class="pin-bottom"></app-game-info>
 
 <button *ngIf="!gameOver" mat-fab color="primary" (click)="openDialog()" class="btn-add">
