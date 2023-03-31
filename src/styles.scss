@@ -30,3 +30,9 @@ body {
         display: none !important;
     }
 }
+
+.mat-fab .mat-button-wrapper {
+    @media (max-width: 420px) {
+        padding: 7px 0;
+    }
+}

@@ -9,12 +9,6 @@ mat-card {
 
 mat-card-content {
     @media (max-width: 720px) {
-        max-width: 450px;
-    }
-    @media (max-width: 560px) {
-        max-width: 350px;
-    }
-    @media (max-width: 420px) {
-        max-width: 280px;
+        max-width: 80%;
     }
 }
