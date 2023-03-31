@@ -32,15 +32,20 @@ export class GameComponent implements OnInit {
       .doc(this.gameId) 
       .valueChanges()
       .subscribe((game: any) => {
-        this.game.players = game.players;
-        this.game.stack = game.stack;
-        this.game.playedCards = game.playedCards;
-        this.game.currentPlayer = game.currentPlayer;
-        this.game.player_images = game.player_images;
-        this.game.pickCardAnimation = game.pickCardAnimation,
-        this.game.currentCard = game.currentCard;
+        this.gameAll(game);
       });
     });
+  }
+
+
+  gameAll(game: any){
+    this.game.players = game.players;
+    this.game.stack = game.stack;
+    this.game.playedCards = game.playedCards;
+    this.game.currentPlayer = game.currentPlayer;
+    this.game.player_images = game.player_images;
+    this.game.pickCardAnimation = game.pickCardAnimation,
+    this.game.currentCard = game.currentCard;
   }
   
 
@@ -56,12 +61,7 @@ export class GameComponent implements OnInit {
       this.gameOver = true;
       this.game.players = [];
     } else if (!this.game.pickCardAnimation) {
-      this.game.currentCard = this.game.stack.pop(); 
-      this.game.pickCardAnimation =  true;
-      this.game.currentPlayer++;
-      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length; 
-      this.saveGame();
-      
+      this.gameCurrentCard();
       setTimeout(() => {
         this.game.playedCards.push(this.game.currentCard);
         this.game.pickCardAnimation = false;
@@ -71,22 +71,36 @@ export class GameComponent implements OnInit {
   }
 
 
+  gameCurrentCard(){
+    this.game.currentCard = this.game.stack.pop(); 
+    this.game.pickCardAnimation =  true;
+    this.game.currentPlayer++;
+    this.game.currentPlayer = this.game.currentPlayer % this.game.players.length; 
+    this.saveGame();
+  }
+
+
   editPlayer(playerId: number) {
     const dialogRef = this.dialog.open(EditPlayerComponent);
     dialogRef.afterClosed().subscribe((change: string) => {
       if (change) {
         if (change == 'DELETE') {
-          this.game.players.splice(playerId, 1);
-          this.game.player_images.splice(playerId, 1);
-          if (this.game.players.length <= 1) {
-            this.startGame = false;
-          }
+          this.playerDelate(playerId);
         } else {
           this.game.player_images[playerId] = change;
         }
         this.saveGame();
       }
     });
+  }
+
+
+  playerDelate(playerId){
+    this.game.players.splice(playerId, 1);
+    this.game.player_images.splice(playerId, 1);
+    if (this.game.players.length <= 1) {
+      this.startGame = false;
+    }
   }
 
 
@@ -107,10 +121,10 @@ export class GameComponent implements OnInit {
 
   saveGame(){
     this
-      .firestore
-      .collection('games')
-      .doc(this.gameId) 
-      .update(this.game.toJson());
+    .firestore
+    .collection('games')
+    .doc(this.gameId) 
+    .update(this.game.toJson());
   }
 }
 

@@ -14,5 +14,4 @@ export class EditPlayerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
